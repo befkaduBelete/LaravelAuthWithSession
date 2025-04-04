@@ -28,7 +28,11 @@ class CustomAuthController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required'
         ]);
-
+        //  $user = new User();
+        //  $user->name = $request->name;
+        //  $user->email = $request->email;
+        //  $user->password = Hash::make($request->password);
+        //  $res = $user->save();
         $user =  User::insert([
             'name' => $request->name,
             'email' => $request->email,
@@ -57,7 +61,7 @@ class CustomAuthController extends Controller
                 return back()->with('error', 'Password not correct !!!');
             }
         } else {
-            return back()->with('error', 'Fail Registered !!!');
+            return back()->with('error', 'Fail to Login !!!');
         }
     }
 

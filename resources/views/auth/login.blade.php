@@ -19,11 +19,14 @@
         @if (Session::has('error'))
             {{ Session::get('error') }}
         @endif
+        @if (Session::has('fail'))
+            {{ Session::get('fail') }}
+        @endif
         <form action="{{ route('login.user') }}" class="flex flex-col gap-2 m-4" method="post">
             @csrf
             <label for="" class="font-bold"> Email </label>
             <input type="text" class="w-1/2 border border-gray-500 rounded-md focus:border-amber-300 p-2"
-                name="email" value="{{old('email')}}">
+                name="email" value="{{ old('email') }}">
             <span class="text-xs text-red-500">
                 @error('email')
                     {{ $message }}
@@ -31,7 +34,7 @@
             </span>
             <label for="" class="font-bold"> Password </label>
             <input type="password" class="w-1/2 border border-gray-500 rounded-md focus:border-amber-300 p-2"
-                name="password" value="{{old('password')}}">
+                name="password" value="{{ old('password') }}">
             <span class="text-xs text-red-500">
                 @error('password')
                     {{ $message }}
